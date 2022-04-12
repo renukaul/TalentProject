@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace TalentProfileProject.Profile
 {
-    public class ManageProfile
+    public class ManageLanguage
 
     {
         public void addLanguage(IWebDriver driver)
@@ -41,7 +41,7 @@ namespace TalentProfileProject.Profile
 
 
         }
-        public void editLanguage(IWebDriver driver)
+        public void editLanguage(IWebDriver driver,string lang,string lvl)
         {
 
             //Click on pen element to make the row editable
@@ -54,8 +54,12 @@ namespace TalentProfileProject.Profile
             //This is textbox here
             IWebElement editedLangtxtbox = driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[1]/input"));
             editedLangtxtbox.Clear();
-            editedLangtxtbox.SendKeys("C#");
+            editedLangtxtbox.SendKeys(lang);
 
+            //Level Text box
+            IWebElement lvlTextBox = driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[2]/select"));
+            lvlTextBox.SendKeys(lvl);
+            lvlTextBox.Click();
 
             Thread.Sleep(4000);
 
@@ -80,6 +84,16 @@ namespace TalentProfileProject.Profile
             IWebElement lang = driver.FindElement(By.XPath("//div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
             
             return lang.Text;
+
+        }
+
+
+        public string getLastLevel(IWebDriver driver)
+        {
+            Thread.Sleep(2000);
+            IWebElement lvl = driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+            return lvl.Text;
 
         }
 

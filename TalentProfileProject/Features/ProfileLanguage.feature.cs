@@ -105,10 +105,15 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("TC002_Update Language")]
-        public void TC002_UpdateLanguage()
+        [NUnit.Framework.TestCaseAttribute("English", "Basic", null)]
+        [NUnit.Framework.TestCaseAttribute("Spanish", "Conversational", null)]
+        [NUnit.Framework.TestCaseAttribute("German", "Fluent", null)]
+        public void TC002_UpdateLanguage(string language, string level, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Language", language);
+            argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TC002_Update Language", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
@@ -124,10 +129,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Logged in Sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 13
- testRunner.When("Language is Updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("Language is Updated with \'{0}\',\'{1}\' data", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.Then("Should be Updated  sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("Should be Updated with \'{0}\',\'{1}\'  sucessfully", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -140,7 +145,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TC003_Delete Language", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+#line 24
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -150,13 +155,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 19
+#line 25
  testRunner.Given("Logged in Sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 26
  testRunner.When("Language is Deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 27
  testRunner.Then("Should be Deleted  sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

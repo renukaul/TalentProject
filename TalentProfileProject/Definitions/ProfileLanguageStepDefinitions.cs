@@ -9,7 +9,7 @@ namespace TalentProfileProject
     [Binding]
     public class ProfileLanguageStepDefinitions : CommonServices 
     {
-        ManageProfile mp = new ManageProfile();
+        ManageLanguage mp = new ManageLanguage();
 
        
 
@@ -38,19 +38,41 @@ namespace TalentProfileProject
         }
 
 
-        [When(@"Language is Updated")]
-        public void WhenLanguageIsUpdated()
+        /* [When(@"Language is Updated")]
+         public void WhenLanguageIsUpdated()
+         {
+             mp.editLanguage(driver);
+         }
+
+         [Then(@"Should be Updated  sucessfully")]
+         public void ThenShouldBeUpdatedSucessfully()
+         {
+             string language = "C#";
+             string addedLanguage = mp.getLastLanguage(driver);
+             Assert.That(addedLanguage == language, "Language could not be Updated, Test Failed");
+         }*/
+
+
+        [When(@"Language is Updated with '([^']*)','([^']*)' data")]
+        public void WhenLanguageIsUpdatedWithData(string lang, string lvl)
         {
-            mp.editLanguage(driver);
+            mp.editLanguage(driver,lang,lvl);
         }
 
-        [Then(@"Should be Updated  sucessfully")]
-        public void ThenShouldBeUpdatedSucessfully()
+        [Then(@"Should be Updated with '([^']*)','([^']*)'  sucessfully")]
+        public void ThenShouldBeUpdatedWithSucessfully(string lang, string lvl)
         {
-            string language = "C#";
-            string addedLanguage = mp.getLastLanguage(driver);
-            Assert.That(addedLanguage == language, "Language could not be Updated, Test Failed");
+
+           
+            string lastUpdatedLanguage = mp.getLastLanguage(driver);
+            string lastUpdatedLvl = mp.getLastLevel(driver);
+
+
+            Assert.That(lastUpdatedLanguage == lang, "Language could not be Updated, Test Failed");
+
+            Assert.That(lastUpdatedLvl == lvl, "Level could not be updated, Test Failed");
         }
+    
 
 
         [When(@"Language is Deleted")]

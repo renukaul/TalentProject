@@ -7,12 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using AventStack.ExtentReports;
+using System.IO;
+using AventStack.ExtentReports.Reporter;
+
+using System.Drawing.Imaging;
 
 namespace TalentProfileProject.Utilities
 {
     public class CommonServices 
     {
+        ExtentReports extent;
+        ExtentTest test;
+        ExtentHtmlReporter htmlReporter;
+
         public static IWebDriver driver;
+
+        public static string screenshotDirectory;
 
         public void LoginPage()
         {
@@ -59,10 +70,31 @@ namespace TalentProfileProject.Utilities
 
 
             }
+          
 
 
         }
 
 
+        public ExtentReports getInstance()
+        {
+            string filePath = Directory.GetParent(@"../../../").FullName
+                + Path.DirectorySeparatorChar + "Result"
+                + Path.DirectorySeparatorChar + "Result_" + DateTime.Now.ToString("ddMMyyyy HHmmss");
+           
+            htmlReporter = new ExtentHtmlReporter(filePath);
+            extent = new ExtentReports();
+            extent.AttachReporter(htmlReporter);
+
+            return extent;
+           
+        }
+
+
+       
+
+
+
+    
     }
 }

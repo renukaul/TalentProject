@@ -88,9 +88,13 @@ namespace TalentProfileProject.Profile
             Thread.Sleep(2000);
 
             IWebElement delBtn = driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i"));
-            delBtn.Click(); 
+            delBtn.Click();
 
+            IAlert al = driver.SwitchTo().Alert();
+            al.Accept();
 
+            /*IWebElement confirmDel = driver.FindElement(By.XPath("//div[2]/div/div[3]/button[2]"));
+            confirmDel.Click();*/
         }
 
 

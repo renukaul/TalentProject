@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ExtentReports" Version="4.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
@@ -22,6 +23,7 @@
     <PackageReference Include="SpecFlow" Version="3.9.58" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.58" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.58" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +51,10 @@
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
     </SpecFlowFeatureFiles>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Screenshot\" />
   </ItemGroup>
 
 </Project>

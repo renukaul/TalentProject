@@ -183,3 +183,7 @@ C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\bin\Debug\net5.0\
 C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
 C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\obj\Debug\net5.0\Interop.AutoItX3Lib.dll
+C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\obj\Debug\net5.0\TalentProfileProject.csproj.ResolveComReference.cache
+C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\bin\Debug\net5.0\ExcelDataReader.dll
+C:\Renu\Indusconnect\TalentProfileProject\TalentProfileProject\bin\Debug\net5.0\ExcelDataReader.DataSet.dll

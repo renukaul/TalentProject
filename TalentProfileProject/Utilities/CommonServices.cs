@@ -83,6 +83,7 @@ namespace TalentProfileProject.Utilities
                 + Path.DirectorySeparatorChar + "Result_" + DateTime.Now.ToString("ddMMyyyy HHmmss");
            
             htmlReporter = new ExtentHtmlReporter(filePath);
+           
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
 

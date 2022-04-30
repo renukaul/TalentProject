@@ -6,12 +6,12 @@ using System;
 using System.Data;
 using System.IO;
 using System.Threading;
-using TalentProfileProject.DataUtility;
-using TalentProfileProject.ShareSkill;
-using TalentProfileProject.Utilities;
+using TalentShareSkillProject.DataUtility;
+using TalentShareSkillProject.ShareSkill;
+using TalentShareSkillProject.Utilities;
 using System.Collections.Generic;
 
-namespace TalentProfileProject
+namespace TalentShareSkillProject
 {
 
     [TestFixture]
@@ -30,19 +30,13 @@ namespace TalentProfileProject
         //List<DataCollection> data;
 
         [OneTimeSetUp]
-        public void Login()
+        public void InitiateProcess()
         {
             excelUtility.populateDataCollectionList();
-
-           
-           // data = excelUtility.dcList;
-
-           
             rep =  getInstance();
             driver = new ChromeDriver();
             objshareskill = new ShareSkills(driver);
             LoginPage();
-            Thread.Sleep(2000);
             objshareskill.takeScreenShot(); // driver);
             
         }
@@ -56,15 +50,16 @@ namespace TalentProfileProject
                 test = rep.CreateTest("ShareSkill Create Application");
                 test.Log(Status.Info, "Starting to Create the shareskill");
 
-
-
+               
                 for (int i = 0; i < excelUtility.TotalRows; i++)
                 {
                     try
                     {
                         test.Log(Status.Info, "Processing data from excel.\n Rownum " + i);
-                        objshareskill.InitializeElements();
-
+                        
+                            objshareskill.AddBtn();
+                            objshareskill.InitializeElements();
+                        
                         //Title    
                         //objshareskill.Title.SendKeys("Programming Tech");
                         objshareskill.Title.SendKeys(excelUtility.readSingleRowData(i, "TITLE"));
@@ -73,13 +68,10 @@ namespace TalentProfileProject
                         //objshareskill.Description.SendKeys("Test Analyst Role");
                         objshareskill.Description.SendKeys(excelUtility.readSingleRowData(i, "DESCRIPTION"));
 
-                        Thread.Sleep(1000);
                         objshareskill.takeScreenShot();
 
 
-
                         //Category
-                        Thread.Sleep(1000);
                         objshareskill.Category.Click();
                         //objshareskill.Category.SendKeys("Graphics & Design");
                         objshareskill.Category.SendKeys(excelUtility.readSingleRowData(i, "CATEGORY"));
@@ -108,10 +100,8 @@ namespace TalentProfileProject
                             }
                         });
 
-                        Thread.Sleep(1000);
                         objshareskill.takeScreenShot();
-                        Thread.Sleep(1000);
-
+                        
                         //Location Type
                         objshareskill.LocationType.ForEach(e =>
                         {
@@ -166,17 +156,19 @@ namespace TalentProfileProject
                             }
                         });
 
-                        Thread.Sleep(1000);
+
                         objshareskill.takeScreenShot();
-                        Thread.Sleep(1000);
+
+                        objshareskill.WrkSample.Click();
+                        objshareskill.uploadFile(excelUtility.readSingleRowData(i,"WRKSAMPLE"));
+
+
 
                         objshareskill.addShareSkill(); // driver);
-                        Thread.Sleep(2000);
                         string cat = objshareskill.getCategory(); // driver);
-                        Thread.Sleep(2000);
+                        
                         Assert.That(cat == excelUtility.readSingleRowData(i,"CATEGORY"), "Test Fail");
                         test.Log(Status.Pass, "Record Added");
-
 
 
                     } // try within loop
@@ -230,13 +222,18 @@ namespace TalentProfileProject
             {
                 test = rep.CreateTest("Shareskill Delete Record");
                 test.Log(Status.Info, "Before deleting a record");
-                objshareskill.deleteshareskill(); // driver);
-                test.Log(Status.Pass, "Record deleted successfully");
+                                
+                string mesg = objshareskill.deleteshareskill(); // driver);
+                
+                Assert.That(mesg.Contains("deleted") ,"Record not deleted Test Failed");
+              //  test.Log(Status.Pass, "Record deleted successfully");
+
             }
             catch (Exception e)
             {
                 test.Log(Status.Fail, "Record not deleted" + e.StackTrace);
             }
+
 
 
         }

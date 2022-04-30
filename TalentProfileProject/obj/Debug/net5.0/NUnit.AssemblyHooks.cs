@@ -9,13 +9,13 @@ using global::System.Runtime.CompilerServices;
 
 [GeneratedCode("SpecFlow", "3.9.58")]
 [SetUpFixture]
-public class TalentProfileProject_NUnitAssemblyHooks
+public class TalentShareSkillProject_NUnitAssemblyHooks
 {
     [OneTimeSetUp]
     [MethodImpl(MethodImplOptions.NoInlining)]
     public void AssemblyInitialize()
     {
-        var currentAssembly = typeof(TalentProfileProject_NUnitAssemblyHooks).Assembly;
+        var currentAssembly = typeof(TalentShareSkillProject_NUnitAssemblyHooks).Assembly;
 
         TestRunnerManager.OnTestRunStart(currentAssembly);
     }
@@ -24,7 +24,7 @@ public class TalentProfileProject_NUnitAssemblyHooks
     [MethodImpl(MethodImplOptions.NoInlining)]
     public void AssemblyCleanup()
     {
-        var currentAssembly = typeof(TalentProfileProject_NUnitAssemblyHooks).Assembly;
+        var currentAssembly = typeof(TalentShareSkillProject_NUnitAssemblyHooks).Assembly;
 
         TestRunnerManager.OnTestRunEnd(currentAssembly);
     }

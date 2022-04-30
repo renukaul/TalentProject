@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\TalentProfileProject.csproj": {}
+    "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\TalentProfileProject.csproj": {}
   },
   "projects": {
-    "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\TalentProfileProject.csproj": {
+    "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\TalentProfileProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\TalentProfileProject.csproj",
+        "projectUniqueName": "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\TalentProfileProject.csproj",
         "projectName": "TalentProfileProject",
-        "projectPath": "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\TalentProfileProject.csproj",
+        "projectPath": "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\TalentProfileProject.csproj",
         "packagesPath": "C:\\Users\\sudhi\\.nuget\\packages\\",
-        "outputPath": "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\obj\\",
+        "outputPath": "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sudhi\\AppData\\Roaming\\NuGet\\NuGet.Config",

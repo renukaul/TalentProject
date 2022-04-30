@@ -1660,6 +1660,18 @@
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
         }
       },
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.0.0-beta2"
+        },
+        "compile": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        }
+      },
       "SharpCompress/0.23.0": {
         "type": "package",
         "dependencies": {
@@ -5625,6 +5637,19 @@
         "nupkg-icon.png",
         "selenium.webdriver.chromedriver.100.0.4896.6000.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
+      ]
+    },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "sha512": "de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "type": "package",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll",
+        "seleniumextras.waithelpers.1.0.2.nupkg.sha512",
+        "seleniumextras.waithelpers.nuspec"
       ]
     },
     "SharpCompress/0.23.0": {
@@ -10537,6 +10562,7 @@
       "Selenium.Support >= 4.1.0",
       "Selenium.WebDriver >= 4.1.0",
       "Selenium.WebDriver.ChromeDriver >= 100.0.4896.6000",
+      "SeleniumExtras.WaitHelpers >= 1.0.2",
       "SpecFlow >= 3.9.58",
       "SpecFlow.NUnit >= 3.9.58",
       "SpecFlow.Tools.MsBuild.Generation >= 3.9.58",
@@ -10550,11 +10576,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\TalentProfileProject.csproj",
-      "projectName": "TalentProfileProject",
-      "projectPath": "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\TalentProfileProject.csproj",
+      "projectUniqueName": "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\TalentShareSkillProject.csproj",
+      "projectName": "TalentShareSkillProject",
+      "projectPath": "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\TalentShareSkillProject.csproj",
       "packagesPath": "C:\\Users\\sudhi\\.nuget\\packages\\",
-      "outputPath": "C:\\Renu\\Indusconnect\\TalentProfileProject\\TalentProfileProject\\obj\\",
+      "outputPath": "C:\\Renu\\Indusconnect\\TalentShareSkillProject\\TalentProfileProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sudhi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10614,6 +10640,10 @@
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
             "version": "[100.0.4896.6000, )"
+          },
+          "SeleniumExtras.WaitHelpers": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           },
           "SpecFlow": {
             "target": "Package",

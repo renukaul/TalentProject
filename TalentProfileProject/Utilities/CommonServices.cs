@@ -10,10 +10,12 @@ using System.Threading;
 using AventStack.ExtentReports;
 using System.IO;
 using AventStack.ExtentReports.Reporter;
+using SeleniumExtras.WaitHelpers;
 
 using System.Drawing.Imaging;
+using OpenQA.Selenium.Support.UI;
 
-namespace TalentProfileProject.Utilities
+namespace TalentShareSkillProject.Utilities
 {
     public class CommonServices 
     {
@@ -27,7 +29,7 @@ namespace TalentProfileProject.Utilities
 
         public void LoginPage()
         {
-          //  driver = new ChromeDriver();
+            //  driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://localhost:5000");
             driver.Manage().Window.Maximize();
             IWebElement signin = driver.FindElement(By.XPath("//*[@id='home']/div/div/div[1]/div/a"));
@@ -50,32 +52,7 @@ namespace TalentProfileProject.Utilities
 
         }
 
-        public void goToTab(IWebDriver driver,string tabName)
-        {
-            Thread.Sleep(2000);
-            switch (tabName)
-            {
-                case "Languages":
-                    driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[1]/a[1]")).Click();
-                    break;
-                case "Skills":
-                    driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[1]/a[2]")).Click();   
-                    break;
-                case "Education":
-                    driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[1]/a[3]")).Click();
-                    break;
-                case "Certifications":
-                    driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[1]/a[4]")).Click();
-                    break;
-
-
-            }
-          
-
-
-        }
-
-
+       
         public ExtentReports getInstance()
         {
             string filePath = Directory.GetParent(@"../../../").FullName
@@ -91,11 +68,6 @@ namespace TalentProfileProject.Utilities
            
         }
 
-
-       
-
-
-
-    
+            
     }
 }

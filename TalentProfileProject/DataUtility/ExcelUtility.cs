@@ -7,7 +7,7 @@ using ExcelDataReader;
 using System.IO;
 using System.Data;
 
-namespace TalentProfileProject.DataUtility
+namespace TalentShareSkillProject.DataUtility
 {
     public class ExcelUtility
     {

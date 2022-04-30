@@ -9,16 +9,21 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoItX3Lib;
 using System.Collections;
+using TalentShareSkillProject.Utilities;
 
-
-namespace TalentProfileProject.ShareSkill
+namespace TalentShareSkillProject.ShareSkill
 {
+
     public class ShareSkills
     {
         AutoItX3 fileUpload = new AutoItX3();
 
         IWebDriver driver;
 
+        public string parentDir = Directory.GetParent(@"../../../").FullName;
+
+
+        //  Web Elements Definition
         public IWebElement Title { get; set; }
         public IWebElement Description { get; set; }
         public IWebElement Category { get; set; }
@@ -37,44 +42,58 @@ namespace TalentProfileProject.ShareSkill
 
         public IWebElement WrkSample { get; set; }
 
-        
+        public IWebElement AddButton { get; set; }  
 
+        public IWebElement PopupMsg { get; set; }
+
+
+
+        // Constructor
         public ShareSkills(IWebDriver _driver)
         {
             driver = _driver;
         }
 
+        // Add Btn 
+        public void AddBtn()
+        {
+            AddButton = driver.FindElement(By.XPath("//div/section[1]/div/div[2]/a"));
+            AddButton.Click();
+        }
+
+
+        //Web Elements Initialization
         public void InitializeElements()
         {
-            Thread.Sleep(3000);
-            IWebElement addbtn = driver.FindElement(By.XPath("//div/section[1]/div/div[2]/a"));
-            addbtn.Click();
 
-            Thread.Sleep(2000);
-            Title = driver.FindElement(By.XPath("//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
+            //AddButton = driver.FindElement(By.XPath("//div/section[1]/div/div[2]/a"));
+            //AddButton.Click();
 
-            Thread.Sleep(2000);
-            Description = driver.FindElement(By.XPath("//div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
 
-            Thread.Sleep(2000);
-            Category = driver.FindElement(By.XPath("//div[2]/div/form/div[3]/div[2]/div/div/select"));
+            // Title = driver.FindElement(By.XPath("//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
+            Title = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath","//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input",2)));
 
-            
-            ServiceTag = driver.FindElement(By.XPath("//div/form/div[4]/div[2]/div/div/div/div/input"));
+            //Description = driver.FindElement(By.XPath("//div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
+            Description = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath", "//div[2]/div/form/div[2]/div/div[2]/div[1]/textarea",2)));
+
+            //Category = driver.FindElement(By.XPath("//div[2]/div/form/div[3]/div[2]/div/div/select"));
+            Category = driver.FindElement(By.XPath(wait.waitByClick(driver,"xPath","//div[2]/div/form/div[3]/div[2]/div/div/select",2)));
+
+            // ServiceTag = driver.FindElement(By.XPath("//div/form/div[4]/div[2]/div/div/div/div/input"));
+            ServiceTag = driver.FindElement(By.XPath(wait.waitByClick(driver,"xPath","//div/form/div[4]/div[2]/div/div/div/div/input",2)));
 
             ServiceType = driver.FindElements(By.Name("serviceType")).ToList();
-
+            
             LocationType = driver.FindElements(By.Name("locationType")).ToList();
 
-            Thread.Sleep(2000);
-            StartDate = driver.FindElement(By.XPath("//div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
-            
-            Thread.Sleep(2000);
-            EndDate = driver.FindElement(By.XPath("//div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input"));
+            //StartDate = driver.FindElement(By.XPath("//div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
+            StartDate = driver.FindElement(By.XPath(wait.waitByClick(driver,"xPath","//div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input",2)));
+
+            //EndDate = driver.FindElement(By.XPath("//div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input"));
+            EndDate = driver.FindElement(By.XPath(wait.waitByClick(driver,"xPath","//div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input",2)));
 
             SkillTrade = driver.FindElements(By.Name("skillTrades")).ToList();
-
-            
+                       
 
             WrkSample = driver.FindElement(By.XPath("//div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
 
@@ -85,8 +104,8 @@ namespace TalentProfileProject.ShareSkill
 
         public void initializeSubCategory()
         {
-            Thread.Sleep(2000);
-            SubCategory = driver.FindElement(By.XPath("//div/form/div[3]/div[2]/div/div[2]/div[1]/select"));
+            
+            SubCategory = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath","//div/form/div[3]/div[2]/div/div[2]/div[1]/select",2)));
         }
 
         public void initializeSkillTrade(bool skilltrade)
@@ -104,50 +123,64 @@ namespace TalentProfileProject.ShareSkill
 
         }
 
+
+        public void uploadFile(string filename)
+        {
+            fileUpload.WinActivate("Open");
+
+            string filepath =  parentDir 
+                + Path.DirectorySeparatorChar + "FileUpload"
+                + Path.DirectorySeparatorChar + filename;
+
+            fileUpload.Send(filepath);
+            Thread.Sleep(2000);
+            fileUpload.Send("{ENTER}");
+        }
+
         public void addShareSkill() //IWebDriver driver)
         {
-            Thread.Sleep(2000);
-            IWebElement saveBtn = driver.FindElement(By.XPath("//div[2]/div/form/div[11]/div/input[1]"));
+
+            // IWebElement saveBtn = driver.FindElement(By.XPath("//div[2]/div/form/div[11]/div/input[1]"));
+            IWebElement saveBtn = driver.FindElement(By.XPath(wait.waitByClick(driver,"xPath","//div[2]/div/form/div[11]/div/input[1]",2)));
             saveBtn.Click();
 
-            Thread.Sleep(2000);
             takeScreenShot(); // driver);
-            Thread.Sleep(1000);
-
+            
         }
 
 
         public string getCategory() //IWebDriver driver)
         {
-            Thread.Sleep(3000);
-            IWebElement Category = driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[2]"));
+            IWebElement Category = driver.FindElement(By.XPath(wait.waitByClick(driver,"xPath","//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[2]",2)));
             return Category.Text;
 
         }
+
         public void editShareSkill() //IWebDriver driver)
         {
 
-            Thread.Sleep(2000);
-            IWebElement managelisting = driver.FindElement(By.XPath("//section[1]/div/a[3]"));
+            //IWebElement managelisting = driver.FindElement(By.XPath("//section[1]/div/a[3]"));
+            IWebElement managelisting = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath","//section[1]/div/a[3]",2)));
             managelisting.Click();
 
-            Thread.Sleep(2000);
-            IWebElement editBtn = driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[2]/i"));
+            //IWebElement editBtn = driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[2]/i"));
+            IWebElement editBtn = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath","//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[2]/i",2)));
             editBtn.Click();
 
-            Thread.Sleep(2000);
-            IWebElement titletxtbox = driver.FindElement(By.XPath("//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
-            /*titletxtbox.Click();*/
+            //IWebElement titletxtbox = driver.FindElement(By.XPath("//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
+            /*IWebElement titletxtbox = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath","//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input",2)));
             titletxtbox.Clear();
-            titletxtbox.SendKeys("Application Technology");
+            titletxtbox.SendKeys("Application Technology");*/
 
-            Thread.Sleep(2000);
+            Title.Clear();
+            Title.SendKeys("Application Technology");
+
+
             IWebElement DescTxtArea = driver.FindElement(By.XPath("//div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
             DescTxtArea.Click();
             DescTxtArea.Clear();
             DescTxtArea.SendKeys("Application Technology Role");
 
-            Thread.Sleep(2000);
             IWebElement saveBtn = driver.FindElement(By.XPath("//div[2]/div/form/div[11]/div/input[1]"));
             saveBtn.Click();
 
@@ -155,8 +188,8 @@ namespace TalentProfileProject.ShareSkill
 
         public string getTitle() //IWebDriver driver)
         {
-            Thread.Sleep(2000);
-            IWebElement title = driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[3]"));
+            //IWebElement title = driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[3]"));
+            IWebElement title = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath","//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[3]",2)));
             return title.Text;
 
         }
@@ -167,20 +200,28 @@ namespace TalentProfileProject.ShareSkill
 
         }
 
-        public void deleteshareskill() //IWebDriver driver)
+        public string deleteshareskill() //IWebDriver driver)
         {
 
+            
 
-            Thread.Sleep(2000);
+            // IWebElement managelisting = driver.FindElement(By.XPath("//section[1]/div/a[3]"));
             IWebElement managelisting = driver.FindElement(By.XPath("//section[1]/div/a[3]"));
             managelisting.Click();
 
-            Thread.Sleep(2000);
-            IWebElement delBtn = driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[3]"));
+            
+            // IWebElement delBtn = driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[3]"));
+            IWebElement delBtn = driver.FindElement(By.XPath(wait.waitByClick(driver,"xPath","//div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[3]",2)));
             delBtn.Click();
 
             IWebElement confirmDel = driver.FindElement(By.XPath("//div[2]/div/div[3]/button[2]"));
-            confirmDel.Click(); 
+            confirmDel.Click();
+
+            PopupMsg = driver.FindElement(By.XPath(wait.waittovisibility(driver,"xPath","/html/body/div[1]/div",2)));
+
+            return PopupMsg.Text;
+
+            
 
           
         }
@@ -193,6 +234,8 @@ namespace TalentProfileProject.ShareSkill
 
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             ss.SaveAsFile(screenshotFileName, ScreenshotImageFormat.Png);
+            Thread.Sleep(1000);
+
         }
 
     }
